@@ -1,94 +1,110 @@
-# RAG Evaluation
 
-Evaluate a RAG (Retrieval Augmented Generation) system with custom metrics
+# RAGAS – RAG Evaluation Framework
+
+Building a Retrieval-Augmented Generation (RAG) application is not enough. We also need to measure whether generated answers are accurate, relevant, and grounded in retrieved documents.
+
+This project explores automated evaluation of RAG applications using **RAGAS**.
+
+## Why RAGAS?
+
+RAGAS helps evaluate the quality of RAG pipelines by measuring how well the system retrieves relevant context and generates reliable answers.
+
+Key evaluation concepts include:
+
+- **Faithfulness:** Is the answer supported by the retrieved context?
+- **Answer Relevancy:** Does the answer address the user's question?
+- **Context Precision:** Are the retrieved documents relevant?
+- **Context Recall:** Does the retrieved context contain the information needed?
+
+Note: The current quickstart configuration uses a custom `DiscreteMetric`. The metrics above are evaluation concepts and are not necessarily all enabled in this project yet.
+
+## Project Structure
+
+```text
+rag_eval/
+├── README.md
+├── pyproject.toml
+├── rag.py
+├── evals.py
+├── __init__.py
+└── evals/
+    ├── datasets/
+    ├── experiments/
+    └── logs/
+```
 
 ## Quick Start
 
-### 1. Set Your API Key
+### 1. Configure your API key
 
-Choose your LLM provider:
+Choose the provider configured in your evaluation code.
+
+For example, Google Gemini:
 
 ```bash
-# OpenAI (default)
-export OPENAI_API_KEY="your-openai-key"
-
-# Or use Anthropic Claude
-export ANTHROPIC_API_KEY="your-anthropic-key"
-
-# Or use Google Gemini
-export GOOGLE_API_KEY="your-google-key"
+export GOOGLE_API_KEY="your-google-api-key"
 ```
 
-### 2. Install Dependencies
+Never commit your actual API key.
 
-Using `uv` (recommended):
+### 2. Install dependencies
+
+Using uv:
 
 ```bash
 uv sync
 ```
 
-Or using `pip`:
+Or using pip:
 
 ```bash
 pip install -e .
 ```
 
-### 3. Run the Evaluation
+### 3. Run the evaluation
 
-Using `uv`:
+Using uv:
 
 ```bash
 uv run python evals.py
 ```
 
-Or using `pip`:
+Or using pip:
 
 ```bash
 python evals.py
 ```
 
-## Project Structure
+## Experiments
 
-```
-rag_eval/
-├── README.md           # This file
-├── pyproject.toml      # Project configuration
-├── rag.py              # Your RAG application code
-├── evals.py            # Evaluation workflow
-├── __init__.py         # Makes this a Python package
-└── evals/              # Evaluation-related data
-    ├── datasets/       # Test datasets
-    ├── experiments/    # Experiment results
-    └── logs/           # Evaluation logs and traces
+RAGAS experiments help compare evaluation runs and understand how changes to a RAG pipeline affect answer quality.
+
+Experiment outputs and execution logs are stored under:
+
+```text
+evals/experiments/
+evals/logs/
 ```
 
 ## Customization
 
-### Modify the LLM Provider
+You can customize:
 
-In `evals.py`, update the LLM configuration:
+- Test questions and expected evaluation criteria.
+- The LLM provider and model.
+- The evaluation metric and grading instructions.
+- The RAG retrieval and answer-generation workflow.
 
-```python
-from ragas.llms import llm_factory
+See `evals.py` and `rag.py` for the implementation.
 
-# Use Anthropic Claude
-llm = llm_factory("claude-3-5-sonnet-20241022", provider="anthropic")
+## Learning Goals
 
-# Use Google Gemini
-llm = llm_factory("gemini-1.5-pro", provider="google")
-
-# Use local Ollama
-llm = llm_factory("mistral", provider="ollama", base_url="http://localhost:11434")
-```
-
-### Customize Test Cases
-
-Edit the `load_dataset()` function in `evals.py` to add or modify test cases.
-
-### Change Evaluation Metrics
-
-Update the `my_metric` definition in `evals.py` to use different grading criteria.
+- Understand RAG evaluation.
+- Explore RAGAS metrics and experiments.
+- Evaluate generated answers against retrieved context.
+- Compare evaluation runs.
+- Build a foundation for continuous RAG quality monitoring.
 
 ## Documentation
 
-Visit https://docs.ragas.io for more information.
+[RAGAS Documentation](https://docs.ragas.io/)
