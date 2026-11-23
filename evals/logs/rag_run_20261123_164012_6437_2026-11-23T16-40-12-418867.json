@@ -1,0 +1,111 @@
+{
+  "run_id": "20261123_164012_6437",
+  "timestamp": "2026-11-23T16:40:12.418867",
+  "query": "How are experiment results stored in Ragas 0.3?",
+  "result": {
+    "answer": "Error generating response: Error code: 404 - [{'error': {'code': 404, 'message': 'models/gpt-4o is not found for API version v1main, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}]",
+    "run_id": "20261123_164012_6437"
+  },
+  "num_documents": 5,
+  "traces": [
+    {
+      "event_type": "query_start",
+      "component": "rag_system",
+      "data": {
+        "run_id": "20261123_164012_6437",
+        "question": "How are experiment results stored in Ragas 0.3?",
+        "question_length": 47,
+        "top_k": 3,
+        "total_documents": 5
+      }
+    },
+    {
+      "event_type": "retrieval",
+      "component": "retriever",
+      "data": {
+        "operation": "retrieve_start",
+        "query": "How are experiment results stored in Ragas 0.3?",
+        "query_length": 47,
+        "top_k": 3,
+        "total_documents": 5
+      }
+    },
+    {
+      "event_type": "retrieval",
+      "component": "retriever",
+      "data": {
+        "operation": "retrieve_complete",
+        "num_retrieved": 3,
+        "scores": [
+          3,
+          3,
+          1
+        ],
+        "document_ids": [
+          0,
+          2,
+          1
+        ]
+      }
+    },
+    {
+      "event_type": "retrieval",
+      "component": "retriever",
+      "data": {
+        "operation": "retrieve_start",
+        "query": "How are experiment results stored in Ragas 0.3?",
+        "query_length": 47,
+        "top_k": 3,
+        "total_documents": 5
+      }
+    },
+    {
+      "event_type": "retrieval",
+      "component": "retriever",
+      "data": {
+        "operation": "retrieve_complete",
+        "num_retrieved": 3,
+        "scores": [
+          3,
+          3,
+          1
+        ],
+        "document_ids": [
+          0,
+          2,
+          1
+        ]
+      }
+    },
+    {
+      "event_type": "llm_call",
+      "component": "openai_api",
+      "data": {
+        "operation": "generate_response",
+        "model": "gpt-4o",
+        "query": "How are experiment results stored in Ragas 0.3?",
+        "prompt_length": 520,
+        "context_length": 223,
+        "num_context_docs": 3
+      }
+    },
+    {
+      "event_type": "error",
+      "component": "openai_api",
+      "data": {
+        "operation": "generate_response",
+        "error": "Error code: 404 - [{'error': {'code': 404, 'message': 'models/gpt-4o is not found for API version v1main, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}]"
+      }
+    },
+    {
+      "event_type": "query_complete",
+      "component": "rag_system",
+      "data": {
+        "run_id": "20261123_164012_6437",
+        "success": true,
+        "response_length": 294,
+        "num_retrieved": 3
+      }
+    }
+  ]
+}

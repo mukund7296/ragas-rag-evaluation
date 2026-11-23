@@ -1,0 +1,9 @@
+question,grading_notes
+What is Ragas 0.3?,"- Experimentation as the central pillar
+- Provides abstractions for datasets, experiments and metrics
+- Supports evaluations for RAG, LLM workflows and agents"
+How are experiment results stored in Ragas 0.3?,"- Configured using different backends like local and Google Drive
+- Stored under experiments/ folder in backend storage"
+What metrics are supported in Ragas 0.3?,"- Discrete metrics
+- Numerical metrics
+- Ranking metrics"
